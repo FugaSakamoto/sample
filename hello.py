@@ -11,10 +11,10 @@ def hello():
 def update_sound(inst,reverb,volume):
     # show the user profile for that user
     inst_str = str(inst)
-    reverb_int = int(reverb)
+    reverb_float = float(reverb)
     volume_str = str(volume)
-    save_file(inst_str,reverb_int,volume_str)
-    return 'User %s%d%s' % (inst_str,reverb_int,volume_str)
+    save_file(inst_str,reverb_float,volume_str)
+    return 'User %s%d%s' % (inst_str,reverb_float,volume_str)
 
 @app.route('/post', methods=['POST'])
 def save_post():
@@ -23,14 +23,14 @@ def save_post():
     reverb = request.form['reverb']
     volume = request.form['volume']
     inst_str = str(inst)
-    reverb_int = int(reverb)
+    reverb_float = float(reverb)
     volume_str = str(volume)
-    save_file(inst_str,reverb_int,volume_str)
+    save_file(inst_str,reverb_float,volume_str)
     return "Come!"
 
-def save_file(inst_str,reverb_int,volume_str):
+def save_file(inst_str,reverb_float,volume_str):
     f = open('fuga.json','w')
-    d = {'inst_str': inst, 'reverb_int': reverb, 'volume_str': volume}
+    d = {'inst_str': inst, 'reverb_float': reverb, 'volume_str': volume}
     json.dump(d,f)
     f.close()
 
