@@ -18,7 +18,6 @@ def update_sound(sound,reverb,volume):
 
 @app.route('/post', methods=['POST'])
 def save_post():
-    print request.form[0]
     # show the post with the given id, the id is an integer
     sound = request.form['sound']
     reverb = request.form['reverb']
