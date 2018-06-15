@@ -7,29 +7,30 @@ app = Flask(__name__)
 def hello():
     return "Hello World!"
 
-@app.route('/update/<sound>/<inst>/<volume>')
-def update_sound(sound,inst,volume):
+@app.route('/update/<inst>/<reverb>/<volume>')
+def update_sound(inst,reverb,volume):
     # show the user profile for that user
-    inst_int = int(inst)
-    volume_float = float(volume)
-    save_file(sound,inst_int,volume_float)
-    return 'User %s%d%2.1f' % (sound,inst_int,volume_float)
+    inst_str = str(inst)
+    reverb_int = int(reverb)
+    volume_str = str(volume)
+    save_file(inst_str,reverb_int,volume_str)
+    return 'User %s%d%2.1f' % (inst_str,reverb_int,volume_str)
 
 @app.route('/post', methods=['POST'])
 def save_post():
     # show the post with the given id, the id is an integer
-    k1 = request.form['k1']
-    k2 = request.form['k2']
-    k3 = request.form['k3']
-    sound = str(k1)
-    inst_int = int(k2)
-    volume_float = float(k3)
-    save_file(sound,inst_int,volume_float)
+    inst = request.form['inst']
+    reverb = request.form['reverb']
+    volume = request.form['volume']
+    inst_str = str(inst)
+    reverb_int = int(reverb)
+    volume_str = str(volume)
+    save_file(inst_str,reverb_int,volume_str)
     return "Come!"
 
-def save_file(sound,inst_int,volume_float):
+def save_file(inst_str,reverb_int,volume_str):
     f = open('fuga.json','w')
-    d = {'k1': sound, 'k2': inst_int, 'k3': volume_float}
+    d = {'inst_str': inst, 'reverb_int': reverb, 'volume_str': volume}
     json.dump(d,f)
     f.close()
 
