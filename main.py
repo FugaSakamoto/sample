@@ -31,7 +31,7 @@ def save_post():
 
 def save_file(sound_str,reverb_float,volume_str):
     f = open('fuga.json','w')
-    d = {'sound_str': sound, 'reverb_float': reverb, 'volume_str': volume}
+    d = {'sound_str': sound_str, 'reverb_float': reverb_float, 'volume_str': volume_str}
     json.dump(d,f)
     f.close()
 
