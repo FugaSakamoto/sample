@@ -14,7 +14,7 @@ def update_sound(inst,reverb,volume):
     reverb_int = int(reverb)
     volume_str = str(volume)
     save_file(inst_str,reverb_int,volume_str)
-    return 'User %s%d%2.1f' % (inst_str,reverb_int,volume_str)
+    return 'User %s%d%s' % (inst_str,reverb_int,volume_str)
 
 @app.route('/post', methods=['POST'])
 def save_post():
